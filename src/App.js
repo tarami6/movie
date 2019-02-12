@@ -10,6 +10,7 @@ import {deleteMovie, editMovie, initialMovies} from "./redux/actions/MovieAction
 import Slider from './components/Slider/Slider'
 import MainTopMovieHolder from './components/movieHolder/MainTopMovieHolder'
 import FormModal from './components/modals/FormModal'
+import DeleteModal from './components/modals/DeleteModal'
 // Functions
 
 //Screen width Mobile || desktop
@@ -113,6 +114,8 @@ class App extends Component {
                     </Row>
                     <FormModal show={this.state.modalForm} movie={this.props.movie.movies[this.state.movieIndex]}
                                movieIndex={this.state.movieIndex} closeModal={() => this.toggleFormModal()}/>
+                    <DeleteModal show={this.state.modalFormClose} index={this.state.movieIndex}
+                                closeModal={() => this.toggleCloseModal()}/>
                 </Container>
             </div>
         );
