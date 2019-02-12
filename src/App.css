@@ -243,11 +243,11 @@
     height: 60vh;
   }
   .PicAndInfoHolder{
-    height: 60%;
-
+    height: 55%;
+    padding-bottom: 3vh;
   }
   .MainImage01 {
-    height: 90%;
+    height: 65%;
     width: 80%;
   }
   .ImageHolder{
@@ -296,6 +296,7 @@
   .BtnHolder{
     padding-left: 10%;
     padding-right: 10%;
+    margin-top: 3vh;
     display: flex;
     align-items: center;
     justify-content: space-between;
@@ -322,6 +323,10 @@
   }
   .AddMovieBtnHolder {
     height: 12vh;
+  }
+  .row {
+    margin-right: 0px !important;
+    margin-left: 0px !important;
   }
 
 }
