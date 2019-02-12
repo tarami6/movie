@@ -6,7 +6,9 @@ import {Container, Row} from 'react-bootstrap';
 import {connect} from 'react-redux'
 import {deleteMovie, editMovie, initialMovies} from "./redux/actions/MovieActions";
 // Components
-import Slider from './components/Slider'
+import Slider from './components/Slider/Slider'
+// Functions
+
 //Screen width Mobile || desktop
 let screen = window.innerWidth
 
@@ -97,8 +99,9 @@ class App extends Component {
 
                     </Row>
                     <Row className="SliderBackGorund">
-                        <Slider/>
-
+                        <div className="SliderHolder justify-content-around align-items-center">
+                            <Slider movieList={this.props.movie.movies} setMovie={this.movieSet.bind(this)}/>
+                        </div>
                     </Row>
 
                 </Container>

@@ -1,41 +1,53 @@
-import React, { Component } from "react";
+import React, {Component} from "react";
 import Slider from "react-slick";
 import 'slick-carousel/slick/slick-theme.css';
 import 'slick-carousel/slick/slick.css';
+import './Slider.css'
+import connect from "react-redux/es/connect/connect";
+import {checkList,slidesScreenSize,speedScreenSize} from '../../functions/function'
 
-export default class SimpleSlider extends Component {
+
+let screen = window.innerWidth
+
+class MultipleItems extends Component {
+
+
+    onClickBtn = (index) => {
+        this.props.setMovie(index)
+        console.log("clicked")
+    }
+
+
     render() {
         const settings = {
-            dots: true,
-            infinite: true,
-            speed: 500,
-            slidesToShow: 1,
-            slidesToScroll: 1
+            dots: false,
+            infinite: checkList(this.props.movie.movies),
+            speed: speedScreenSize(screen),
+            slidesToShow: slidesScreenSize(screen),
+            slidesToScroll: 1,
+            arrows: screen < 576 ? false : true,
+            centerMode: true
+
         };
         return (
-            <div>
-                <h2> Single Item</h2>
-                <Slider {...settings}>
-                    <div>
-                        <h3>1</h3>
-                    </div>
-                    <div>
-                        <h3>2</h3>
-                    </div>
-                    <div>
-                        <h3>3</h3>
-                    </div>
-                    <div>
-                        <h3>4</h3>
-                    </div>
-                    <div>
-                        <h3>5</h3>
-                    </div>
-                    <div>
-                        <h3>6</h3>
-                    </div>
+            <div className="SliderHolder01">
+                <Slider  {...settings}>
+                    {this.props.movie.movies.map((item, index) => (
+                        <div id="SliderDivMain" className="SliderDivMain" key={index}>
+                            <div onClick={this.onClickBtn.bind(this, index)}>
+                                <img src={item.show.image.medium} className="SliderImage" alt=""/>
+                            </div>
+                        </div>))}
                 </Slider>
             </div>
         );
     }
 }
+
+const mapStateToProps = (state) => {
+    return {
+        movie: state.movie
+
+    }
+}
+export default connect(mapStateToProps)(MultipleItems)
