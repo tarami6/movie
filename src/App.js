@@ -1,7 +1,8 @@
 import React, {Component} from 'react';
 import './App.css';
 // Bootsratp
-import {Container, Row} from 'react-bootstrap';
+import {Container, Row, Col} from 'react-bootstrap';
+import { FaPlus } from "react-icons/fa";
 // Redux
 import {connect} from 'react-redux'
 import {deleteMovie, editMovie, initialMovies} from "./redux/actions/MovieActions";
@@ -96,7 +97,9 @@ class App extends Component {
 
 
                     <Row className="AddMovieBtnHolder justify-content-around align-items-center">
-
+                        <Col className="ColPlusBtn" xl={12}>
+                            <button className="PlusBtn"><FaPlus color={'#fff'} size={25}/></button>
+                        </Col>
                     </Row>
                     <Row className="SliderBackGorund">
                         <div className="SliderHolder justify-content-around align-items-center">
