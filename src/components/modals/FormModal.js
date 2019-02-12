@@ -47,6 +47,11 @@ class FormModal extends React.Component{
             this.setState({err: true})
             return ""
         }
+        if (value.length > 25) {
+            this.setState({errors: {...this.state.errors,[err]: 'The phrase longer than 25 characters'}})
+            this.setState({err: true})
+            return value.substring(0,25)
+        }
         if(err === 'name') {
             if(
                 this.props.movieStore.movies.find(x => x.show.name === value && x.show.id !== this.state.id)){
