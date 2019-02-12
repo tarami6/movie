@@ -249,6 +249,8 @@
   .MainImage01 {
     height: 90%;
     width: 80%;
+    border-radius: 5px;
+    box-shadow: 1px 1px 1px black;
   }
   .ImageHolder{
     display: flex;
@@ -256,9 +258,7 @@
     justify-content: flex-end;
     padding-right: 0;
   }
-  /*color: #ff3131;*/
 
-  /*opacity: 0.5;*/
   .InfoHolder{
     display: flex;
     flex-direction: column;

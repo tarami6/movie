@@ -12,7 +12,8 @@ import MainTopMovieHolder from './components/movieHolder/MainTopMovieHolder'
 import MobileMainTopMovieHolder from './components/movieHolder/MobileMainTopMovieHolder'
 import FormModal from './components/modals/FormModal'
 import DeleteModal from './components/modals/DeleteModal'
-import AddMovie from "./components/modals/AddMovie";
+import {AddMovie} from "./components/modals/AddMovie";
+import {Loader} from "./components/Loader/Loader";
 // Functions
 
 //Screen width Mobile || desktop
@@ -57,7 +58,6 @@ class App extends Component {
 
     toggleFormModal(bool) {
         if (bool) {
-            console.log("bool");
             this.setState({
                 modalForm: true
             })
@@ -74,7 +74,7 @@ class App extends Component {
                 modalDelete: true
             })
         } else {
-            if (this.state.movieIndex != 0) {
+            if (this.state.movieIndex !== 0) {
                 this.setState({
                     modalDelete: false,
                     movieIndex: this.state.movieIndex - 1
@@ -107,7 +107,7 @@ class App extends Component {
     render() {
         if (this.state.loading) {
             return (
-                <div>Loading</div>
+              <Loader/>
             )
         }
 

@@ -23,15 +23,9 @@ class FormModal extends React.Component{
             }
         }
     }
-    componentWillMount() {
-        console.log("will")
-    }
-    componentDidMount() {
-        console.log("did")
-    }
+
     componentWillReceiveProps(nextProps) {
         const movie = this.props.movieStore.movies[this.props.movieIndex].show
-
         this.setState({
             id: movie.id,
             name: movie.name,
@@ -43,16 +37,23 @@ class FormModal extends React.Component{
 
 
 
+
     validateString = (errName, value) => {
         let err = errName
-        console.log("state", value.length)
         let validStr = value.replace(/[^A-Za-z ]/g, "");
         let validUpCase = validStr.toLowerCase().split(' ').map((s) => s.charAt(0).toUpperCase() + s.substring(1)).join(" ")
-        console.log("validStr", validUpCase)
         if (value.length < 1) {
             this.setState({errors: {...this.state.errors,[err]: 'Can\'t be empty'}})
             this.setState({err: true})
             return ""
+        }
+        if(err === 'name') {
+            if(
+                this.props.movieStore.movies.find(x => x.show.name === value && x.show.id !== this.state.id)){
+                this.setState({errors: {...this.state.errors,[err]: 'This name already exists'}})
+                this.setState({err: true})
+                return value
+            }
         }
         this.setState({errors: {...this.state.errors,[err]: ''}})
         this.setState({err: false})
@@ -63,39 +64,31 @@ class FormModal extends React.Component{
     validateDate = (date) => {
         let reg = /^\d+\s*$/;
         let newDate = parseInt(date)
-        console.log("length", typeof newDate)
-        console.log("reg", newDate)
         if (typeof newDate == 'number') {
             if (newDate >= 1900 && newDate <= 2020 && (newDate + "").length === 4 && reg.test(date)) {
-                console.log('itsTrue')
                 this.setState({errors: {...this.state.errors,premiered: ''}})
                 this.setState({err: false})
                 return newDate
             } else if (isNaN(newDate)) {
-                console.log("hit", newDate)
                 this.setState({errors: {...this.state.errors,premiered: 'Year must be between 1900 - 2020 '}})
                 this.setState({err: true})
                 return "Need a Number"
             } else {
                 this.setState({errors: {...this.state.errors,premiered: 'Year must be between 1900 - 2020 '}})
                 this.setState({err: true})
-                console.log('itsfalse')
                 return newDate
             }
         }
-        console.log("hit2")
     }
 
     validateRunTime = (time) => {
         let newTime = parseInt(time);
         let reg = /^\d+\s*$/;
-        console.log("state", typeof time)
         if (newTime > 0 && newTime < 300 && (newTime + "").length < 4 && reg.test(time)) {
             this.setState({errors: {...this.state.errors,runtime: ''}})
             this.setState({err: false})
             return newTime
         } else if (isNaN(newTime)) {
-            console.log("hit", newTime)
             this.setState({errors: {...this.state.errors,runtime: 'Its must be a NUMBER a greater then 0 smaller 300'}})
             this.setState({err: true})
             return "Need a Number"
@@ -108,12 +101,10 @@ class FormModal extends React.Component{
     }
 
     onChange = (event) => {
-
         switch (event.target.name) {
             case 'name':
                 if (event.target.value.length >= 0) {
                     let value = this.validateString(event.target.name, event.target.value)
-                    console.log("emppty")
                     this.setState({
                         [event.target.name]: value
                     })
@@ -134,18 +125,17 @@ class FormModal extends React.Component{
             case 'genres':
                 let value = this.validateString(event.target.name, event.target.value)
                 if (!this.state.errors.genres) {
-                    console.log("emppty")
                     this.setState({
                         [event.target.name]: value
                     })
                 }
                 return
-
+            default:
+                break;
         }
 
     }
     onSubmit = (movie) => event => {
-        console.log("submites", movie)
         event.preventDefault();
         if (!this.state.err) {
             const newMovie = {
@@ -159,18 +149,27 @@ class FormModal extends React.Component{
                 }
             };
             this.props.editMovie(newMovie);
-            console.log("submites01",newMovie)
             this.props.closeModal(false)
         }
-        console.log("submites02",this.state)
+    }
+
+    closeModal(){
+        this.props.closeModal(false)
+        this.setState({
+            errors: {
+                name: '',
+                premiered: '',
+                runtime: '',
+                genres: '',
+            }
+        })
     }
 
     render(){
-        console.log("thisModal", this.props.movieStore.movies[this.props.movieIndex])
-        console.log("thisModal02", this.state.errors)
+
         return(
             <Modal show={this.props.show} >
-                <Modal.Header closeButton onClick={() => this.props.closeModal(false)}>
+                <Modal.Header closeButton onClick={() => this.closeModal()}>
                     <Modal.Title>Edit Movie</Modal.Title>
                 </Modal.Header>
                 <Modal.Body>
@@ -218,7 +217,7 @@ class FormModal extends React.Component{
                     </div>
                 </Modal.Body>
                 <Modal.Footer>
-                    <Button variant="secondary" onClick={() => this.props.closeModal(false)}>
+                    <Button variant="secondary" onClick={() => this.closeModal()}>
                         Close
                     </Button>
                 </Modal.Footer>

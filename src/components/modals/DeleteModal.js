@@ -10,7 +10,6 @@ import {connect} from 'react-redux'
     }
 
     render(){
-        console.log("CloSEMOdal", this.props)
         return(
             <Modal show={this.props.show} >
                 <Modal.Header closeButton onClick={() => this.props.closeModal(false)}>
