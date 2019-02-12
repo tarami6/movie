@@ -33,7 +33,7 @@ const MainTopMovieHolder = (props) => {
                             <Col sm={6} md={6} lg={6} className="ColBtn01">
                                 <button className="EditBtn" onClick={()=> props.modalForm(true)}>Edit</button>
                                 <br/>
-                                <button className="DeleteBtn" onClick={() => props.deleteModal(true)}>delete</button>
+                                <button className="DeleteBtn" onClick={() => props.deleteModal(true)}>Delete</button>
                             </Col>
                         </Row>
                     </Col>

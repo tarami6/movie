@@ -105,13 +105,22 @@ class App extends Component {
 
 
     render() {
+
         if (this.state.loading) {
             return (
               <Loader/>
             )
         }
+        if(!this.state.loading && this.props.movie.movies.length === 0 ){
+            console.log("this",this.props.movie.movies.length)
+            return (
+                <Loader reset={()=> this.fetchMovies()}/>
+            )
+
+        }
 
         return (
+
             <div className="MyClass">
                 <Container fluid={true} className="MainContainer">
                     {screen > 576 ?

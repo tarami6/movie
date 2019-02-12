@@ -223,7 +223,7 @@ class FormModal extends React.Component{
                 </Modal.Body>
                 <Modal.Footer>
                     <Button variant="secondary" onClick={() => this.closeModal()}>
-                        Close
+                        Cancel
                     </Button>
                 </Modal.Footer>
             </Modal>
