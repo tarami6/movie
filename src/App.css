@@ -231,8 +231,8 @@
     margin: 0 auto;
   }
   body > #root > div {
-    height: 107vh;
-    width: 107vw;
+    height: 100vh;
+    width: 100vw;
   }
   .MainContainer {
     align-items: center;

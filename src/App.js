@@ -8,6 +8,8 @@ import {connect} from 'react-redux'
 import {deleteMovie, editMovie, initialMovies} from "./redux/actions/MovieActions";
 // Components
 import Slider from './components/Slider/Slider'
+import MainTopMovieHolder from './components/movieHolder/MainTopMovieHolder'
+import FormModal from './components/modals/FormModal'
 // Functions
 
 //Screen width Mobile || desktop
@@ -94,7 +96,10 @@ class App extends Component {
         return (
             <div className="MyClass">
                 <Container fluid={true} className="MainContainer">
-
+                    <MainTopMovieHolder
+                        movie={this.props.movie.movies? this.props.movie.movies[this.state.movieIndex].show : ''}
+                        modalForm={this.toggleFormModal.bind(this)}
+                        deleteModal={this.toggleCloseModal.bind(this)}/>
 
                     <Row className="AddMovieBtnHolder justify-content-around align-items-center">
                         <Col className="ColPlusBtn" xl={12}>
@@ -106,7 +111,8 @@ class App extends Component {
                             <Slider movieList={this.props.movie.movies} setMovie={this.movieSet.bind(this)}/>
                         </div>
                     </Row>
-
+                    <FormModal show={this.state.modalForm} movie={this.props.movie.movies[this.state.movieIndex]}
+                               movieIndex={this.state.movieIndex} closeModal={() => this.toggleFormModal()}/>
                 </Container>
             </div>
         );
