@@ -12,6 +12,7 @@ import MainTopMovieHolder from './components/movieHolder/MainTopMovieHolder'
 import MobileMainTopMovieHolder from './components/movieHolder/MobileMainTopMovieHolder'
 import FormModal from './components/modals/FormModal'
 import DeleteModal from './components/modals/DeleteModal'
+import AddMovie from "./components/modals/AddMovie";
 // Functions
 
 //Screen width Mobile || desktop
@@ -24,7 +25,8 @@ class App extends Component {
             loading: true,
             movieIndex: 0,
             modalForm: false,
-            modalFormClose: false
+            modalDelete: false,
+            addMovieModal: false
         }
     }
 
@@ -68,22 +70,36 @@ class App extends Component {
 
     toggleCloseModal(bool) {
         if (bool) {
-            console.log("bool");
             this.setState({
-                modalFormClose: true
+                modalDelete: true
             })
         } else {
             if (this.state.movieIndex != 0) {
                 this.setState({
-                    modalFormClose: false,
+                    modalDelete: false,
                     movieIndex: this.state.movieIndex - 1
                 })
             } else {
                 this.setState({
-                    modalFormClose: false,
+                    modalDelete: false,
                 })
             }
 
+        }
+    }
+    toggleAddMovieModal(bool) {
+        if (bool) {
+            this.setState({
+                addMovieModal: true
+            })
+            setTimeout(() =>{
+                this.setState({
+                addMovieModal: false
+            }) }, 5000);
+        } else {
+            this.setState({
+                addMovieModal: false
+            })
         }
     }
 
@@ -112,7 +128,7 @@ class App extends Component {
 
                     <Row className="AddMovieBtnHolder justify-content-around align-items-center">
                         <Col className="ColPlusBtn" xl={12}>
-                            <button className="PlusBtn"><FaPlus color={'#fff'} size={25}/></button>
+                            <button onClick={()=> this.toggleAddMovieModal(true)} className="PlusBtn"><FaPlus color={'#fff'} size={25}/></button>
                         </Col>
                     </Row>
                     <Row className="SliderBackGorund">
@@ -122,8 +138,10 @@ class App extends Component {
                     </Row>
                     <FormModal show={this.state.modalForm} movie={this.props.movie.movies[this.state.movieIndex]}
                                movieIndex={this.state.movieIndex} closeModal={() => this.toggleFormModal()}/>
-                    <DeleteModal show={this.state.modalFormClose} index={this.state.movieIndex}
+                    <DeleteModal show={this.state.modalDelete} index={this.state.movieIndex}
                                 closeModal={() => this.toggleCloseModal()}/>
+                    <AddMovie show={this.state.addMovieModal}
+                                 closeModal={() => this.toggleAddMovieModal()}/>
                 </Container>
             </div>
         );
