@@ -82,3 +82,11 @@ input[type="submit"],.DeleteBtn01 {
     text-decoration-color: #adb5bd !important;
     text-decoration: line-through;
 }
+@media only screen and (max-width: 575px) {
+    .modal-dialog {
+        margin: 5vh 5vw !important;
+    }
+    .modal-content {
+        width: 90vw;
+    }
+}

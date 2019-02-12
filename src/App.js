@@ -9,6 +9,7 @@ import {deleteMovie, editMovie, initialMovies} from "./redux/actions/MovieAction
 // Components
 import Slider from './components/Slider/Slider'
 import MainTopMovieHolder from './components/movieHolder/MainTopMovieHolder'
+import MobileMainTopMovieHolder from './components/movieHolder/MobileMainTopMovieHolder'
 import FormModal from './components/modals/FormModal'
 import DeleteModal from './components/modals/DeleteModal'
 // Functions
@@ -97,10 +98,17 @@ class App extends Component {
         return (
             <div className="MyClass">
                 <Container fluid={true} className="MainContainer">
-                    <MainTopMovieHolder
-                        movie={this.props.movie.movies? this.props.movie.movies[this.state.movieIndex].show : ''}
-                        modalForm={this.toggleFormModal.bind(this)}
-                        deleteModal={this.toggleCloseModal.bind(this)}/>
+                    {screen > 576 ?
+                        <MainTopMovieHolder
+                            movie={this.props.movie.movies? this.props.movie.movies[this.state.movieIndex].show : ''}
+                            modalForm={this.toggleFormModal.bind(this)}
+                            deleteModal={this.toggleCloseModal.bind(this)}/>:
+                        <MobileMainTopMovieHolder
+                            movie={this.props.movie.movies[this.state.movieIndex].show}
+                            modalForm={this.toggleFormModal.bind(this)}
+                            deleteModal={this.toggleCloseModal.bind(this)}
+                        />
+                    }
 
                     <Row className="AddMovieBtnHolder justify-content-around align-items-center">
                         <Col className="ColPlusBtn" xl={12}>

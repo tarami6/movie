@@ -295,7 +295,7 @@
   }
   .BtnHolder{
     padding-left: 10%;
-    padding-right: 15%;
+    padding-right: 10%;
     display: flex;
     align-items: center;
     justify-content: space-between;
@@ -323,4 +323,5 @@
   .AddMovieBtnHolder {
     height: 12vh;
   }
+
 }
