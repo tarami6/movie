@@ -25,22 +25,22 @@ class App extends Component {
     }
 
     // Movie Api
-    fetchMovies = () => {
+    fetchMovies = async () => {
+        try {
+            const response = await fetch(`https://api.tvmaze.com/search/shows?q=game`);
+            const responseJson = await response.json();
+            await this.props.initialMovies(responseJson)
+            await this.setState({loading: false})
 
-        axios.get(`https://api.tvmaze.com/search/shows?q=game`)
-            .then(res => {
-                const movies = res.data;
-                console.log("m", movies)
-                this.props.initialMovies(movies)
-                this.setState({loading: false})
-            })
+        } catch (e) {
+            console.log('erroe', e);
 
 
     }
 
 
     render() {
-        if (!this.state.loading) {
+        if(!this.state.loading){
             console.log("test", this.props.movie.movies[0].show.name)
         } else {
             console.log("test load failed")
