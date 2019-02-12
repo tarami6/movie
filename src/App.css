@@ -1,33 +1,326 @@
-.App {
-  text-align: center;
+.MyClass {
+  display: flex;
+  height: 100vh;
+  width: 100vw;
+  justify-content: space-between;
+  background-image: linear-gradient(to right, #9D1DB2 , #6834BC);
 }
 
-.App-logo {
-  animation: App-logo-spin infinite 20s linear;
-  height: 40vmin;
-  pointer-events: none;
+.MainContainer {
+  align-items: center;
 }
 
-.App-header {
-  background-color: #282c34;
-  min-height: 100vh;
+.MainMovieHolder {
+  background-color: rgba(0, 0, 0, 0.33);
+  width: 60vw;
+  height: 50vh;
+  margin: 0 auto;
+  margin-top: 10vh;
+  border-radius: 10px;
+  box-shadow: 1px 1px 20px #000;
+}
+
+.AddMovieBtnHolder {
+  height: 10vh;
+}
+.colMy {
+
+}
+.ColMyImage {
+  padding: 0;
+  border-top-left-radius: 10px;
+  border-bottom-left-radius: 10px;
+}
+
+.MainImage{
+  height: 100%;
+  width: 100%;
+  border-top-left-radius: 10px;
+  border-bottom-left-radius: 10px;
+}
+
+.SliderHolder{
+  width: 65vw;
+  margin: 0 auto;
+}
+
+.MovieContentMainRow{
+  padding: 0 45px;
+  height: 100%;
+}
+.IconFa{
+  font-size: 40px;
+  color: #ff3131;
+  opacity: 0.5;
+  margin-bottom: 17px;
+}
+.IconFa2{
+  font-size: 40px;
+  color: #ff3131;
+  opacity: 0.5;
+}
+.Pholder01{
+  margin: 0;
+  height: 55px;
+  display: flex;
+  align-items: flex-end;
+}
+.ColP01{
+}
+.InfoP{
+  font-size: 40px;
+  color: #ff3131;
+  height: 46px;
+}
+.InfoSpan{
+  font-size: 25px;
+  color: #ff3131;
+  opacity: 0.5;
+}
+.InfoSpan2{
+  display: flex;
+  align-items: flex-start;
+  align-content: flex-start;
+  margin: 0;
+  padding: 0;
+  font-size: 55px;
+  line-height: 53px;
+  color: #ff3131;
+  opacity: 0.5;
+}
+.ColH1{
   display: flex;
   flex-direction: column;
+  margin-top: 30px;
+}
+.ColH2{
+  display: flex;
   align-items: center;
+  height: 50px;
+
+}
+.TitleH1{
+  font-size: 3em;
+  color: #fff;
+}
+.TitleH2{
+  font-size: 2em;
+  color: #fff;
+  opacity: 0.3;
+}
+.ColPlusBtn{
+  display: flex;
   justify-content: center;
-  font-size: calc(10px + 2vmin);
-  color: white;
+}
+.EditBtn{
+  width: 100px;
+  height: 50px;
+  background-color: #6834BC;
+  border: 0;
+  border-radius: 50px;
+  color: #fff;
+  box-shadow: 2px 2px 10px #000;
+}
+.PlusBtn{
+  width: 50px;
+  height: 50px;
+  background-color: #6834BC;
+  border: 0;
+  border-radius: 50px;
+  color: #fff;
+  box-shadow: 2px 2px 10px #000;
+}
+.DeleteBtn{
+  width: 70px;
+  height: 35px;
+  background-color: #6834BC;
+  border: 0;
+  border-radius: 50px;
+  color: #fff;
+  box-shadow: 2px 2px 10px #000;
+}
+.ColBtn01{
+  display: flex;
+  align-items: flex-end;
+  flex-direction: column;
+}
+.SliderBackGorund{
+  background-color: rgba(0, 0, 0, 0.33);
 }
 
-.App-link {
-  color: #61dafb;
-}
+/*Media*/
+@media  (min-width: 992px) and (max-width: 1199px) {
+  .MainMovieHolder {
+    width: 70vw;
+    height: 50vh;
 
-@keyframes App-logo-spin {
-  from {
-    transform: rotate(0deg);
   }
-  to {
-    transform: rotate(360deg);
+  .SliderHolder{
+    width: 75vw;
+    margin: 0 auto;
+  }
+}
+@media (min-width: 768px) and (max-width: 991px) {
+  .MainMovieHolder {
+    width: 90vw;
+    height: 50vh;
+
+  }
+  .SliderHolder{
+    width: 90vw;
+    margin: 0 auto;
+  }
+}
+@media (min-width: 576px) and (max-width: 767px) {
+  .MainMovieHolder {
+    width: 90vw;
+    height: 40vh;
+
+  }
+  .MovieContentMainRow {
+    padding: 0 20px;
+  }
+  .AddMovieBtnHolder {
+    height: 20vh;
+  }
+  .SliderHolder{
+    width: 90vw;
+    margin: 0 auto;
+  }
+  .TitleH1{
+    font-size: 2em !important;
+    color: #fff;
+  }
+  .TitleH2{
+    font-size: 1.5em !important;
+
+  }
+  .InfoSpan{
+    font-size: 20px;
+
+  }
+  .InfoP{
+    font-size: 20px;
+    height: 25px;
+  }
+  .IconFa{
+    font-size: 20px;
+    margin-bottom: 5px;
+  }
+  .IconFa2{
+    font-size: 20px;
+  }
+
+  .InfoSpan2{
+    font-size: 55px;
+    line-height: 53px;
+    font-size: 27px;
+    line-height: 20px;
+  }
+  .ColH1 {
+    margin-top: 60px;
+  }
+
+  .Pholder01 {
+    height: 20px;
+  }
+}
+@media only screen and (max-width: 575px) {
+  .SliderHolder {
+    width: 100vw;
+    margin: 0 auto;
+  }
+  body > #root > div {
+    height: 107vh;
+    width: 107vw;
+  }
+  .MainContainer {
+    align-items: center;
+    padding: 0px;
+  }
+  .MainContainer01 {
+    background: rgba(0, 0, 0, 0.33);
+    height: 60vh;
+  }
+  .PicAndInfoHolder{
+    height: 60%;
+
+  }
+  .MainImage01 {
+    height: 90%;
+    width: 80%;
+  }
+  .ImageHolder{
+    display: flex;
+    align-items: flex-end;
+    justify-content: flex-end;
+    padding-right: 0;
+  }
+  /*color: #ff3131;*/
+
+  /*opacity: 0.5;*/
+  .InfoHolder{
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-end;
+  }
+  .InfoTextHolder{
+    font-size: 2em;
+    color: #ff3131;
+  }
+  .SpanHolder{
+    color: #ff3131;
+    opacity: 0.5;
+  }
+  .InfoIconHolder{
+    font-size: 2em;
+    color: #ff3131;
+    opacity: 0.5;
+    margin-bottom: 19px;
+  }
+  .TextHolder{
+    height: 40px;
+    margin-bottom: 0;
+  }
+  .YearHolder{
+    height: 36px;
+    line-height: 30px;
+    font-size: 43px;
+    margin-bottom: 0;
+    color: #ff3131;
+    opacity: 0.5;
+  }
+  .TitlesHolder{
+    padding-left: 10%;
+  }
+  .BtnHolder{
+    padding-left: 10%;
+    padding-right: 15%;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+  }
+  .EditBtn01 {
+    width: 70px;
+    height: 30px;
+    background-color: #6834BC;
+    border: 0;
+    border-radius: 50px;
+    color: #fff;
+    box-shadow: 2px 2px 10px #000;
+    font-size: 18px;
+  }
+  .DeleteBtn02 {
+    width: 55px;
+    height: 25px;
+    background-color: #6834BC;
+    border: 0;
+    border-radius: 50px;
+    color: #fff;
+    box-shadow: 1px 1px 2px #000;
+    font-size: 14px;
+  }
+  .AddMovieBtnHolder {
+    height: 12vh;
   }
 }

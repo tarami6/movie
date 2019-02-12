@@ -1,11 +1,12 @@
 import React, {Component} from 'react';
 import './App.css';
 // Bootsratp
-import {Button} from 'react-bootstrap';
-import axios from 'axios';
+import {Container, Row} from 'react-bootstrap';
 // Redux
 import {connect} from 'react-redux'
 import {deleteMovie, editMovie, initialMovies} from "./redux/actions/MovieActions";
+// Components
+import Slider from './components/Slider'
 //Screen width Mobile || desktop
 let screen = window.innerWidth
 
@@ -38,29 +39,69 @@ class App extends Component {
         }
     }
 
-        // axios.get(`https://api.tvmaze.com/search/shows?q=game`)
-        //     .then(res => {
-        //         const movies = res.data;
-        //         console.log("m", movies)
-        //         this.props.initialMovies(movies)
-        //         this.setState({loading: false})
-        //     })
+    movieSet(index) {
+        console.log("index", index)
+        this.setState({
+            movieIndex: index
+        })
+    }
+
+    toggleFormModal(bool) {
+        if (bool) {
+            console.log("bool");
+            this.setState({
+                modalForm: true
+            })
+        } else {
+            this.setState({
+                modalForm: false
+            })
+        }
+    }
+
+    toggleCloseModal(bool) {
+        if (bool) {
+            console.log("bool");
+            this.setState({
+                modalFormClose: true
+            })
+        } else {
+            if (this.state.movieIndex != 0) {
+                this.setState({
+                    modalFormClose: false,
+                    movieIndex: this.state.movieIndex - 1
+                })
+            } else {
+                this.setState({
+                    modalFormClose: false,
+                })
+            }
+
+        }
+    }
+
 
     render() {
-        if(!this.state.loading){
-            console.log("test", this.props.movie.movies[0].show.name)
-        } else {
-            console.log("test load failed")
+        if (this.state.loading) {
+            return (
+                <div>Loading</div>
+            )
         }
 
         return (
-            <div>
-                {!this.state.loading ? <p>{this.props.movie.movies[0].show.name}</p> :
-                    <p>No fetch</p>
-                }
+            <div className="MyClass">
+                <Container fluid={true} className="MainContainer">
 
 
-                <Button variant="primary">Primary</Button>
+                    <Row className="AddMovieBtnHolder justify-content-around align-items-center">
+
+                    </Row>
+                    <Row className="SliderBackGorund">
+                        <Slider/>
+
+                    </Row>
+
+                </Container>
             </div>
         );
     }
