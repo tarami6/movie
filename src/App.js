@@ -27,7 +27,7 @@ class App extends Component {
     // Movie Api
     fetchMovies = () => {
 
-        axios.get(`http://api.tvmaze.com/search/shows?q=game`)
+        axios.get(`https://api.tvmaze.com/search/shows?q=game`)
             .then(res => {
                 const movies = res.data;
                 console.log("m", movies)
