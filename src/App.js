@@ -35,9 +35,16 @@ class App extends Component {
         } catch (e) {
             console.log('erroe', e);
 
-
+        }
     }
 
+        // axios.get(`https://api.tvmaze.com/search/shows?q=game`)
+        //     .then(res => {
+        //         const movies = res.data;
+        //         console.log("m", movies)
+        //         this.props.initialMovies(movies)
+        //         this.setState({loading: false})
+        //     })
 
     render() {
         if(!this.state.loading){
