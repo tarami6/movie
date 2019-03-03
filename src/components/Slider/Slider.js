@@ -19,6 +19,7 @@ class MultipleItems extends Component {
 
 
     render() {
+        console.log("state", this.props.movie)
         const settings = {
             dots: false,
             infinite: checkList(this.props.movie.movies),
@@ -35,9 +36,10 @@ class MultipleItems extends Component {
                     {this.props.movie.movies.map((item, index) => (
                         <div id="SliderDivMain" className="SliderDivMain" key={index}>
                             <div onClick={this.onClickBtn.bind(this, index)}>
-                                <img src={item.show.image.medium} className="SliderImage" alt=""/>
+                                <img src={item.show.image? item.show.image.medium : null} className="SliderImage" alt=""/>
                             </div>
-                        </div>))}
+                        </div>
+                    ))}
                 </Slider>
             </div>
         );
@@ -47,7 +49,6 @@ class MultipleItems extends Component {
 const mapStateToProps = (state) => {
     return {
         movie: state.movie
-
     }
 }
 export default connect(mapStateToProps)(MultipleItems)

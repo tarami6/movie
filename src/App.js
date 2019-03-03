@@ -123,17 +123,21 @@ class App extends Component {
 
             <div className="MyClass">
                 <Container fluid={true} className="MainContainer">
-                    {screen > 576 ?
+                    <div className="MainTopMovieHolder">
                         <MainTopMovieHolder
                             movie={this.props.movie.movies? this.props.movie.movies[this.state.movieIndex].show : ''}
                             modalForm={this.toggleFormModal.bind(this)}
                             deleteModal={this.toggleCloseModal.bind(this)}/>:
-                        <MobileMainTopMovieHolder
-                            movie={this.props.movie.movies[this.state.movieIndex].show}
-                            modalForm={this.toggleFormModal.bind(this)}
-                            deleteModal={this.toggleCloseModal.bind(this)}
-                        />
-                    }
+                    </div>
+                        <div className="MobileMainTopMovieHolder">
+                            <MobileMainTopMovieHolder
+                                movie={this.props.movie.movies[this.state.movieIndex].show}
+                                modalForm={this.toggleFormModal.bind(this)}
+                                deleteModal={this.toggleCloseModal.bind(this)}
+                            />
+
+                        </div>
+
 
                     <Row className="AddMovieBtnHolder justify-content-around align-items-center">
                         <Col className="ColPlusBtn" xl={12}>

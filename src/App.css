@@ -27,6 +27,7 @@
 
 }
 .ColMyImage {
+  height: 100%;
   padding: 0;
   border-top-left-radius: 10px;
   border-bottom-left-radius: 10px;
@@ -148,6 +149,11 @@
   background-color: rgba(0, 0, 0, 0.33);
 }
 
+/*forMobile*/
+.MobileMainTopMovieHolder{
+  display: none;
+}
+
 /*Media*/
 @media  (min-width: 992px) and (max-width: 1199px) {
   .MainMovieHolder {
@@ -218,11 +224,20 @@
     line-height: 20px;
   }
   .ColH1 {
-    margin-top: 60px;
+    margin-top: 20px;
   }
 
   .Pholder01 {
     height: 20px;
+  }
+
+  .EditBtn {
+    width: 100px;
+    height: 50px;
+  }
+  .DeleteBtn {
+    width: 70px;
+    height: 35px;
   }
 }
 @media only screen and (max-width: 575px) {
@@ -329,4 +344,11 @@
     margin-left: 0px !important;
   }
 
+  /*mainscreen*/
+.MainTopMovieHolder{
+  display: none;
+}
+.MobileMainTopMovieHolder{
+  display: block;
+}
 }
